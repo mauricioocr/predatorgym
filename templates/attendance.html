@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block title %}
+Asistencia
+{% endblock title %}
+{% block head %}
+
+<h1>Aplicar asistencia</h1>
+
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong></strong> {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
+<div class="container mt-2">
+
+<div class="row">
+
+<div class="col-md-3"> </div>
+
+<div class="col-md-6">
+
+
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong></strong> {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
+{% comment  %} Contactanos {% endcomment %}
+
+<form action="/attendance" method="post">{% csrf_token %}
+    {% csrf_token %}
+
+
+
+    <div class="form-group">
+        <input type="text" 
+        class="form-control mt-2" 
+        value="{{user.username}}" 
+        name="username"
+        id="username" 
+        placeholder="Ingrese su Usuario" 
+        readonly 
+        required>
+        </div>
+    
+
+    <div class="form-group">
+    <select class="form-control mt-2" id="workout" name="workout" required>
+        <option selected>Seleccionar entrenamiento</option>
+        <option value="Biceps">Biceps</option>
+        <option value="Triceps">Triceps</option>
+        <option value="Hombros">Hombros</option>
+        <option value="Pecho">Pecho</option>
+        <option value="ABS">Abdomen</option>
+        <option value="Espalda">Espalda</option>
+        <option value="Calentamiento">Calentamiento</option>
+        <option value="Pierna">Pierna</option>
+    </select>
+    </div>
+
+
+    <div class="form-group">
+        <label for="Logintime" class=text-white>Inicio de sesión</label>
+        <input
+            type="time"
+            class="form-control mt-2"
+            name="Logintime"
+            id="Logintime"
+            placeholder="Hora de inicio de sesión"
+            required
+        />
+    </div>
+
+    <div class="form-group">
+        <label for="Loginout" class=text-white>Cierre de sesión</label>
+        <input
+            type="time"
+            class="form-control mt-2"
+            name="Loginout"
+            id="Loginout"
+            placeholder="Hora de cierre de sesión"
+            required
+        />
+    </div>
+
+<div class="form-group">
+
+    
+</select>
+</div>
+
+    <br>
+    <div class="d-grid gap-2">
+    <button class="btn btn-warning" type="submit">Marcar asistencia</button>
+
+    </div>
+
+    </form>
+
+
+
+</div>
+
+<div class="col-md-3"></div>
+
+</div>
+
+
+
+</div>
+{% endblock head %}

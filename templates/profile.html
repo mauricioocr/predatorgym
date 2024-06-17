@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}
+Perfil
+{% endblock title %}
+
+{% block head %}
+
+
+
+<div class="container mt-2">
+
+<div class="row">
+
+<div class="col-md-4">
+    <h2>Detalles</h2>
+{% comment  %} Contactanos {% endcomment %}
+
+{% for post in posts %}
+
+<div class="card" >
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item bg-dark text-white"><h6>Nombre : {{post.NombreCompleto}}</h6></li>
+        <li class="list-group-item bg-dark text-white"><h6>Cedula : {{post.Cedula}}</h6></li>
+        <li class="list-group-item bg-dark text-white"><h6>Email : {{post.Email}}</h6></li>
+        <li class="list-group-item bg-dark text-white"><h6>Telefono : {{post.Telefono}}</h6></li>
+        <li class="list-group-item bg-dark text-white"><h6>FechaNacimiento : {{post.FechaNacimiento}}</h6></li>
+        <li class="list-group-item bg-dark text-white"><h6>Membresia : {{post.SeleccionarMembresia}}$</h6></li>
+        <li class="list-group-item bg-dark text-white"><h6>Entrenador : {{post.SeleccionarEntrenador}}</h6></li>
+        <li class="list-group-item bg-dark text-white"><h6>Direccion : {{post.Direccion}}</h6></li>
+        <li class="list-group-item bg-dark text-white"><h6>Estado de pago : {{post.EstadoDePago}}</h6></li>
+        <li class="list-group-item bg-dark text-white"><h6>Fecha de vencimiento : {{post.FechaVencimiento}}</h6></li>
+    </ul>
+</div>
+
+{% endfor %}
+
+
+</div>
+
+<div class="col-md-8">
+
+    <div><Center><h2 class="display-4 mt-3"><b>Asistencia</b></div></Center></h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Inicio de sesion</th>
+            <th scope="col">Fin de sesion</th>
+            <th scope="col">Entrenamiento</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for asis in attendance %}
+        <tr>
+
+            <td>{{asis.Fecha}}</td>
+            <td>{{asis.InicioSesion}}</td>
+            <td>{{asis.FinSesion}}</td>
+            <td>{{asis.Entrenamiento}}</td>
+        </tr>
+        {% endfor %}
+        <tbody>
+    </table>
+
+</div>
+
+
+</div>
+{% endblock head %}

@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% block title %}
+Inscripción para gimnasio
+{% endblock title %}
+{% block head %}
+
+<h1>Únete a PredatorGYM</h1>
+
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong></strong> {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
+<div class="container mt-2">
+
+<div class="row">
+
+<div class="col-md-3"> </div>
+
+<div class="col-md-6">
+
+
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong></strong> {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
+{% comment  %} Contactanos {% endcomment %}
+
+<form action="/join" method="post">{% csrf_token %}
+    {% csrf_token %}
+
+    <div class="form-group">
+    <input type="text" class="form-control" name="NombreCompleto" placeholder="Ingrese su nombre completo" required>
+    </div>
+
+    <div class="form-group">
+        <input type="text" class="form-control mt-2" name="Cedula" placeholder="Ingrese su CI" required>
+        </div>
+
+
+    <div class="form-group">
+    <input type="email" class="form-control mt-2" value="{{user.email}}" name="Email" placeholder="Ingrese su email" readonly required>
+    </div>
+
+    <div class="form-group">
+        <input
+            type="number"
+            class="form-control mt-2"
+            name="Telefono"
+            placeholder="Ingresa su numero telefonico"
+            required
+        />
+    </div>
+
+    <div class="form-group">
+        <input
+            type="text"
+            class="form-control mt-2"
+            name="Direccion"
+            placeholder="Direccion"
+            required
+        />
+    </div>
+
+    <div class="form-group">
+        <select class="form-control mt-2" id="Member" name="Member" required>
+            <option selected>Selecciona membresia</option>
+                {% for p in Membresia %}
+<option value="{{p.Plan}} - {{p.Precio}}"$>{{p.Plan}} - {{p.Precio}}$</option>
+{% endfor %}
+
+</select>
+</div>
+
+<div class="form-group">
+    <select class="form-control mt-2" id="Trainer" name="Trainer" required>
+        <option selected>Selecciona entrenador</option>
+            {% for p in Entrenadore %}
+<option value="{{p.Nombre}}">{{p.Nombre}}</option>
+{% endfor %}
+
+</select>
+</div>
+
+    <div class="form-group">
+        <input
+            type="date"
+            class="form-control mt-2"
+            name="FechaNacimiento"
+            placeholder="Fecha de nacimiento"
+            required
+        />
+    </div>
+
+
+    <br>
+    <div class="d-grid gap-2">
+    <button class="btn btn-warning" type="submit">Inscribirse</button>
+
+    </div>
+
+    </form>
+
+
+
+</div>
+
+<div class="col-md-3"></div>
+
+</div>
+
+
+
+</div>
+{% endblock head %}
